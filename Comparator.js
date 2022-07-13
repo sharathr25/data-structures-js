@@ -1,4 +1,4 @@
-module.exports = class Comparator {
+class Comparator {
   constructor (compareFunction = Comparator.defaultCompareFunction) {
     this.compare = compareFunction
   }
@@ -28,3 +28,5 @@ module.exports = class Comparator {
     return this.equals(a, b) || this.greaterThan(a, b)
   }
 }
+
+module.exports = Comparator
