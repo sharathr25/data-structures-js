@@ -132,6 +132,25 @@ class LinkedList {
     return deletedHead
   }
 
+  reverse () {
+    let currNode = this.head
+    let prevNode = null
+    let nextNode = null
+    ;[this.head, this.tail] = [this.tail, this.head]
+
+    while (currNode) {
+      // store next node
+      nextNode = currNode.next
+      // point next of current node to previous node
+      currNode.next = prevNode
+      // forward previous and current node
+      prevNode = currNode
+      currNode = nextNode
+    }
+
+    return this
+  }
+
   fromArray (values) {
     values.forEach(this.append, this)
     return this

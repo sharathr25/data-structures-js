@@ -1,4 +1,4 @@
-const LinkedList = require('./linkedList/LinkedList')
+const LinkedList = require('./LinkedList')
 
 const linkedList = new LinkedList()
 
@@ -40,6 +40,9 @@ linkedList
   .insert(11, 0)
   .prepend(88)
 
+console.log('before reverse =>', linkedList.toString())
+linkedList.reverse()
+console.log('after reverse =>', linkedList.toString())
 console.log('before deleting anything =>', linkedList.toString())
 linkedList.deleteHead()
 console.log('After deleting head =>', linkedList.toString())
