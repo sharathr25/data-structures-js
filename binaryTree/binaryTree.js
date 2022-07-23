@@ -1,12 +1,4 @@
-const util = require('util')
-
-class Node {
-  constructor (value) {
-    this.value = value
-    this.left = null
-    this.right = null
-  }
-}
+const BinaryTreeNode = require('./BinaryTreeNode')
 
 class BinaryTree {
   constructor () {
@@ -14,7 +6,7 @@ class BinaryTree {
   }
 
   insert (value) {
-    const newNode = new Node(value)
+    const newNode = new BinaryTreeNode(value)
 
     if (!this.root) {
       this.root = newNode
@@ -49,59 +41,35 @@ class BinaryTree {
     return false
   }
 
-  #preOrder (root) {
-    if (root === null) return
-    console.log(root.value)
-    this.#preOrder(root.left)
-    this.#preOrder(root.right)
-  }
-
   preOrder () {
-    this.#preOrder(this.root)
-  }
-
-  #postOrder (root) {
-    if (root === null) return
-    this.#postOrder(root.left)
-    this.#postOrder(root.right)
-    console.log(root.value)
+    const _preOrder = root => {
+      if (root === null) return
+      console.log(root.value)
+      _preOrder(root.left)
+      _preOrder(root.right)
+    }
+    _preOrder(this.root)
   }
 
   postOrder () {
-    this.#postOrder(this.root)
-  }
-
-  #inOrder (root) {
-    if (root === null) return
-    this.#inOrder(root.left)
-    console.log(root.value)
-    this.#inOrder(root.right)
+    const _postOrder = root => {
+      if (root === null) return
+      _postOrder(root.left)
+      _postOrder(root.right)
+      console.log(root.value)
+    }
+    _postOrder(this.root)
   }
 
   inOrder () {
-    this.#inOrder(this.root)
+    const _inOrder = root => {
+      if (root === null) return
+      _inOrder(root.left)
+      console.log(root.value)
+      _inOrder(root.right)
+    }
+    _inOrder(this.root)
   }
 }
 
-const binaryTree = new BinaryTree()
-
-binaryTree.insert(7)
-binaryTree.insert(4)
-binaryTree.insert(9)
-binaryTree.insert(1)
-binaryTree.insert(6)
-binaryTree.insert(8)
-binaryTree.insert(10)
-
-console.log(
-  util.inspect(binaryTree, { showHidden: false, depth: null, colors: true })
-)
-
-console.log(binaryTree.find(10))
-
-console.log('pre order')
-binaryTree.preOrder()
-console.log('in order')
-binaryTree.inOrder()
-console.log('post order')
-binaryTree.postOrder()
+module.exports = BinaryTree
