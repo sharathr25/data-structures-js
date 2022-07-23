@@ -1,25 +1,17 @@
-const util = require('util')
-const BinaryTree = require('./binaryTree')
+const BinarySearchTree = require('./BinarySearchTree')
 
-const binaryTree = new BinaryTree()
+const binaryTree = new BinarySearchTree()
 
-binaryTree.insert(7)
-binaryTree.insert(4)
-binaryTree.insert(9)
-binaryTree.insert(1)
-binaryTree.insert(6)
-binaryTree.insert(8)
-binaryTree.insert(10)
+binaryTree
+  .insert(7)
+  .insert(4)
+  .insert(9)
+  .insert(1)
+  .insert(6)
+  .insert(8)
+  .insert(10)
 
-console.log(
-  util.inspect(binaryTree, { showHidden: false, depth: null, colors: true })
-)
-
-console.log(binaryTree.find(10))
-
-console.log('pre order')
-binaryTree.preOrder()
-console.log('in order')
-binaryTree.inOrder()
-console.log('post order')
-binaryTree.postOrder()
+console.log(binaryTree.contains(10))
+console.log('pre order', binaryTree.preOrder())
+console.log('in order', binaryTree.inOrder())
+console.log('post order', binaryTree.postOrder())
