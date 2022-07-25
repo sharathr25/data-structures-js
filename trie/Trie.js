@@ -5,7 +5,7 @@ class Trie {
     this.root = new TrieNode('*')
   }
 
-  addWord (word) {
+  insert (word) {
     let current = this.root
 
     for (const char of word) {

@@ -2,9 +2,9 @@ const Trie = require('./Trie')
 
 const trie = new Trie()
 
-trie.addWord('car')
-trie.addWord('caret')
-trie.addWord('cat')
+trie.insert('car')
+trie.insert('caret')
+trie.insert('cat')
 
 console.log(trie.contains('car'))
 console.log(trie.contains('ca'))
