@@ -2,12 +2,19 @@ const Comparator = require('../Comparator')
 const DoublyLinkedListNode = require('./doublyLinkedListNode')
 
 class DoublyLinkedList {
+  /**
+   * @param {function} [comparatorFunction] - comparator function for node values.
+   */
   constructor (comparatorFunction) {
     this.head = null
     this.tail = null
     this.compare = new Comparator(comparatorFunction)
   }
 
+  /**
+   * @param {*} value
+   * @return {DoublyLinkedList}
+   */
   prepend (value) {
     const newNode = new DoublyLinkedListNode(value, this.head)
     if (this.head) {
@@ -20,6 +27,10 @@ class DoublyLinkedList {
     return this
   }
 
+  /**
+   * @param {*} value
+   * @return {DoublyLinkedList}
+   */
   append (value) {
     const newNode = new DoublyLinkedListNode(value, null, this.tail)
 
@@ -35,6 +46,10 @@ class DoublyLinkedList {
     return this
   }
 
+  /**
+   * @param {*} value
+   * @return {DoublyLinkedListNode}
+   */
   delete (value) {
     if (!this.head) return null
 
@@ -70,6 +85,9 @@ class DoublyLinkedList {
     return deletedNode
   }
 
+  /**
+   * @return {DoublyLinkedListNode}
+   */
   deleteHead () {
     if (!this.head) return null
     const deletedNode = this.head
@@ -83,6 +101,9 @@ class DoublyLinkedList {
     return deletedNode
   }
 
+  /**
+   * @return {DoublyLinkedListNode}
+   */
   deleteTail () {
     if (!this.head) return null
     const deletedNode = this.tail
@@ -96,6 +117,9 @@ class DoublyLinkedList {
     return deletedNode
   }
 
+  /**
+   * @return {(DoublyLinkedListNode|null)}
+   */
   find (value, cb = () => false) {
     let currentNode = this.head
     while (currentNode) {
@@ -110,6 +134,9 @@ class DoublyLinkedList {
     return null
   }
 
+  /**
+   * @return {DoublyLinkedList}
+   */
   reverse () {
     let currNode = this.head
     ;[this.head, this.tail] = [this.tail, this.head]
@@ -128,11 +155,18 @@ class DoublyLinkedList {
     return this
   }
 
+  /**
+   * @param {[*]} values
+   * @return {DoublyLinkedList}
+   */
   fromArray (values) {
     values.forEach(this.prepend, this)
     return this
   }
 
+  /**
+   * @return {[DoublyLinkedList]}
+   */
   toArray () {
     const nodes = []
     let currentNode = this.head
@@ -143,6 +177,10 @@ class DoublyLinkedList {
     return nodes
   }
 
+  /**
+   * @param {Function} cb - callback for node toString function
+   * @return {String}
+   */
   toString (cb) {
     return this.toArray()
       .map(node => node.toString(cb))
