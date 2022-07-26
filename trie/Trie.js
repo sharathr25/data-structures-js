@@ -5,6 +5,11 @@ class Trie {
     this.root = new TrieNode('*')
   }
 
+  /**
+   *
+   * @param {String} word
+   * @returns {Trie}
+   */
   insert (word) {
     let current = this.root
 
@@ -14,8 +19,14 @@ class Trie {
     }
 
     current.isCompleteWord = true
+    return this
   }
 
+  /**
+   *
+   * @param {String} word
+   * @returns {Boolean}
+   */
   contains (word) {
     let current = this.root
 
@@ -27,6 +38,12 @@ class Trie {
     return current.isCompleteWord
   }
 
+  /**
+   *
+   * @param {String} word
+   * @param {TrieNode} root
+   * @param {Number} index
+   */
   remove (word, root = this.root, index = 0) {
     if (index === word.length) {
       root.isCompleteWord = false
@@ -41,6 +58,11 @@ class Trie {
     }
   }
 
+  /**
+   *
+   * @param {String} prefix
+   * @returns {[String]}
+   */
   findWords (prefix) {
     const _findWords = (prefix, root, words) => {
       if (!root) return
@@ -60,6 +82,11 @@ class Trie {
     return words
   }
 
+  /**
+   *
+   * @param {String} prefix
+   * @returns {TrieNode}
+   */
   findLastNode (prefix) {
     let current = this.root
 

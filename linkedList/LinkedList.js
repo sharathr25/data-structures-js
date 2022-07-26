@@ -2,12 +2,21 @@ const Comparator = require('../Comparator')
 const LinkedListNode = require('./LinkedListNode')
 
 class LinkedList {
+  /**
+   *
+   * @param {Function} comparatorFunction
+   */
   constructor (comparatorFunction) {
     this.head = null
     this.tail = null
     this.compare = new Comparator(comparatorFunction)
   }
 
+  /**
+   *
+   * @param {*} value
+   * @returns {LinkedList}
+   */
   prepend (value) {
     const newNode = new LinkedListNode(value, this.head)
     this.head = newNode
@@ -15,6 +24,11 @@ class LinkedList {
     return this
   }
 
+  /**
+   *
+   * @param {*} value
+   * @returns {LinkedList}
+   */
   append (value) {
     const newNode = new LinkedListNode(value)
     if (!this.head) {
@@ -29,6 +43,12 @@ class LinkedList {
     return this
   }
 
+  /**
+   *
+   * @param {*} value
+   * @param {Number} rawIndex
+   * @returns {LinkedList}
+   */
   insert (value, rawIndex) {
     const index = rawIndex < 0 ? 0 : rawIndex
     if (!this.head || index === 0) {
@@ -49,6 +69,11 @@ class LinkedList {
     return this
   }
 
+  /**
+   *
+   * @param {*} value
+   * @returns {LinkedListNode}
+   */
   delete (value) {
     let currentNode = this.head
     let prevNode = currentNode
@@ -81,6 +106,12 @@ class LinkedList {
     return deletedNode
   }
 
+  /**
+   *
+   * @param {*} value
+   * @param {Function} cb
+   * @returns {(LinkedListNode | null)}
+   */
   find (value, cb = () => false) {
     let currentNode = this.head
     while (currentNode) {
@@ -95,6 +126,10 @@ class LinkedList {
     return null
   }
 
+  /**
+   *
+   * @returns {(LinkedListNode | null)}
+   */
   deleteTail () {
     if (!this.head) return null // if empty
 
@@ -116,6 +151,10 @@ class LinkedList {
     return deletedTail
   }
 
+  /**
+   *
+   * @returns {(LinkedListNode | null)}
+   */
   deleteHead () {
     if (!this.head) return null // if empty
     const deletedHead = this.head
@@ -132,6 +171,10 @@ class LinkedList {
     return deletedHead
   }
 
+  /**
+   *
+   * @returns {(LinkedList)}
+   */
   reverse () {
     let currNode = this.head
     let prevNode = null
@@ -151,11 +194,20 @@ class LinkedList {
     return this
   }
 
+  /**
+   *
+   * @param {*[]} values
+   * @returns {LinkedList}
+   */
   fromArray (values) {
     values.forEach(this.append, this)
     return this
   }
 
+  /**
+   *
+   * @returns {[LinkedList]}
+   */
   toArray () {
     const nodes = []
     let currentNode = this.head
@@ -166,6 +218,11 @@ class LinkedList {
     return nodes
   }
 
+  /**
+   *
+   * @param {Function} [cb]
+   * @returns {String}
+   */
   toString (cb) {
     return this.toArray()
       .map(node => node.toString(cb))

@@ -1,4 +1,8 @@
 class BinaryTreeNode {
+  /**
+   *
+   * @param {*} value
+   */
   constructor (value) {
     this.value = value
     this.left = null

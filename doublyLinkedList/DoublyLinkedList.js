@@ -118,7 +118,10 @@ class DoublyLinkedList {
   }
 
   /**
-   * @return {(DoublyLinkedListNode|null)}
+   *
+   * @param {*} value
+   * @param {Function} [cb = () => false]
+   * @returns
    */
   find (value, cb = () => false) {
     let currentNode = this.head
@@ -156,7 +159,7 @@ class DoublyLinkedList {
   }
 
   /**
-   * @param {[*]} values
+   * @param {*[]} values
    * @return {DoublyLinkedList}
    */
   fromArray (values) {
