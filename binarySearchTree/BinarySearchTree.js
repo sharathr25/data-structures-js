@@ -69,13 +69,13 @@ class BinarySearchTree {
    * @return {*[]}
    */
   preOrder () {
+    const preOrder = []
     const _preOrder = (root, preOrder) => {
       if (root === null) return
       preOrder.push(root.value)
       _preOrder(root.left, preOrder)
       _preOrder(root.right, preOrder)
     }
-    const preOrder = []
     _preOrder(this.root, preOrder)
     return preOrder
   }
@@ -84,13 +84,13 @@ class BinarySearchTree {
    * @return {*[]}
    */
   postOrder () {
+    const postOrder = []
     const _postOrder = (root, postOrder) => {
       if (root === null) return
       _postOrder(root.left, postOrder)
       _postOrder(root.right, postOrder)
       postOrder.push(root.value)
     }
-    const postOrder = []
     _postOrder(this.root, postOrder)
     return postOrder
   }
@@ -99,13 +99,13 @@ class BinarySearchTree {
    * @return {*[]}
    */
   inOrder () {
+    const inOrder = []
     const _inOrder = (root, inOrder) => {
       if (root === null) return
       _inOrder(root.left, inOrder)
       inOrder.push(root.value)
       _inOrder(root.right, inOrder)
     }
-    const inOrder = []
     _inOrder(this.root, inOrder)
     return inOrder
   }
