@@ -4,9 +4,10 @@ const queue = new Queue()
 
 console.log(queue.isEmpty())
 
-queue.enqueue(1)
-queue.enqueue(2)
-queue.enqueue(3)
+queue
+  .enqueue(1)
+  .enqueue(2)
+  .enqueue(3)
 
 console.log(queue.isEmpty())
 

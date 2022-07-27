@@ -1,5 +1,5 @@
 const LinkedList = require('../linkedList/LinkedList')
-class Queue {
+class Stack {
   constructor () {
     this.linkedList = new LinkedList()
   }
@@ -25,7 +25,7 @@ class Queue {
    *
    * @param {*} value - element to insert at the end of queue
    */
-  enqueue (value) {
+  push (value) {
     this.linkedList.append(value)
     return this
   }
@@ -34,8 +34,8 @@ class Queue {
    *
    * @returns {(*|null)}
    */
-  dequeue () {
-    const removedHead = this.linkedList.deleteHead()
+  pop () {
+    const removedHead = this.linkedList.deleteTail()
     return removedHead ? removedHead.value : null
   }
 
@@ -49,4 +49,4 @@ class Queue {
   }
 }
 
-module.exports = Queue
+module.exports = Stack
